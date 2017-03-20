@@ -1,0 +1,51 @@
+{
+  "name": "revolut-test",
+  "version": "1.0.0",
+  "description": "Revolut test app",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "NODE_ENV=production webpack --config=webpack.config.prod.js --progress --profile --colors",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorfomenko/revolut.git"
+  },
+  "author": "Victor Fomenko <victorfomenko@me.com> (https://github.com/victorfomenko/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorfomenko/revolut/issues"
+  },
+  "homepage": "https://github.com/victorfomenko/revolut#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-runtime": "^6.23.0",
+    "css-loader": "^0.27.3",
+    "express": "^4.15.2",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.0",
+    "postcss-loader": "^1.3.3",
+    "precss": "^1.4.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.14.1",
+    "webpack": "^2.2.1",
+    "webpack-combine-loaders": "^2.0.3",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-hot-middleware": "^2.17.1"
+  }
+}
