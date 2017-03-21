@@ -22,9 +22,10 @@ class Currency extends Component {
 	}
 
 	onInputChange(e){
-		let value = Number(e.target.value);
-		if(typeof value !== 'number' || isNaN(value)) {return}
+		let value = Number(e.target.value)
+
 		if(value<0){ value = 0 }
+		if(typeof value !== 'number' || isNaN(value)) {return}
 
 		this.setState({ value })
 		this.props.onCurrencyValueChange(value)
@@ -37,7 +38,6 @@ class Currency extends Component {
 	render () {
 		const { currency } = this.state;
 		const value = Math.round(this.state.value*100)/100;
-		console.log(value)
 		return (
 			<div className={styles.currency}>
 				<span className={styles.arrow} onClick={()=>{this.onArrowClick(-1)}}>&lt;</span>
@@ -48,7 +48,7 @@ class Currency extends Component {
 						<input 
 							className={styles.value}
 							type='text'
-							size={String(value).length}
+							size={String(value).length || 1}
 							onChange={this.onInputChange}
 							value={value ? value : ''}
 						/>

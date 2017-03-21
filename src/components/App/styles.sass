@@ -1,10 +1,57 @@
-.revolut
-	height: 100%
-	max-width: 300px
-	margin: 0 auto
-	background-color: #1b94e4
-	color: #daf1ff
+$BG_FROM_COLOR: #1b94e4
+$BG_TO_COLOR: #1d80c1
+$BG_BORDER_COLOR: #67abd8
 
 \:global
 	body
 		font-size: 16px
+		margin: 0
+	*
+		box-sizing: border-box
+		font-family: Arial, Georgia, Serif
+		-webkit-font-smoothing: antialiased
+		-moz-osx-font-smoothing: grayscale
+
+.revolut
+	height: 100%
+	max-width: 300px
+	margin: 0 auto
+	color: #daf1ff
+
+.rate
+	text-align: center
+	min-height: 40px
+	font-size: 14px
+	background-color: $BG_FROM_COLOR
+
+.rate__value
+	border: 1px solid $BG_BORDER_COLOR
+	padding: 3px
+	display: inline-block
+	border-radius: 3px
+	margin-top: 5px
+
+.currency-from
+	background-color: $BG_FROM_COLOR
+	position: relative
+	&:after
+		position: absolute
+		content: ''
+		left: 50%
+		margin-left: -5px
+		width: 0
+		height: 0
+		border-left: 10px solid transparent
+		border-right: 10px solid transparent
+		border-top: 10px solid $BG_FROM_COLOR
+
+.currency-to
+	background-color: $BG_TO_COLOR
+	padding-bottom: 20px
+
+.currency-rate
+	font-size: 10px
+	float: right
+	padding-right: 30px
+	margin-top: -18px
+

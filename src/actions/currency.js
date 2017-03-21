@@ -17,7 +17,7 @@ export const changeActiveCurrencyFrom = ({ direction }) => async (dispatch, getS
   const baseCurrency = state.currenciesFrom[newIndex];
 
   dispatch({ type: actionTypes.CHANGE_ACTIVE_CURRENCY_FROM, data: { newIndex } });
-  
+
   if(!Object.keys(state.rates[baseCurrency]).length){
     let data = await ExchangeRates.getLatest(baseCurrency);
     dispatch({ type: actionTypes.UPDATE_RATES, data });  
@@ -25,10 +25,17 @@ export const changeActiveCurrencyFrom = ({ direction }) => async (dispatch, getS
   
 }
 
-export const changeActiveCurrencyTo = ({ direction }) => (dispatch, getState) => {
+export const changeActiveCurrencyTo = ({ direction }) => async (dispatch, getState) => {
 	const state = getState();
   const newIndex = getNewIndex(state.currenciesTo, state.activeToCurrency, direction)
+  const baseCurrency = state.currenciesTo[newIndex];
+
   dispatch({ type: actionTypes.CHANGE_ACTIVE_CURRENCY_TO, data: { newIndex } });
+
+  if(!Object.keys(state.rates[baseCurrency]).length){
+    let data = await ExchangeRates.getLatest(baseCurrency);
+    dispatch({ type: actionTypes.UPDATE_RATES, data });  
+  }
 }
 
 const getNewIndex = (array, currentIndex, direction) => {

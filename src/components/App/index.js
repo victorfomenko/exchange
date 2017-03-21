@@ -51,9 +51,14 @@ class App extends Component {
 
 	componentDidMount() {
 		const currencyFrom = this.state.currencyFrom;
+		const currencyTo = this.state.currencyTo;
 		this.props.updateRates(currencyFrom);
+		this.props.updateRates(currencyTo);
 		this.timer = setInterval(
-			() => this.props.updateRates(this.state.currencyFrom),
+			() => {
+				this.props.updateRates(this.state.currencyFrom)
+				this.props.updateRates(this.state.currencyTo)
+			},
 			10000
 		)
 		document.querySelector('input').focus();
@@ -90,25 +95,42 @@ class App extends Component {
 
 		return(
 			<div className={styles.revolut}>
-  			<Rate
-  				currencyFrom={currencyFrom}
-  				currencyTo={currencyTo}
-  				rates={this.props.rates}
-  			/>
-  			<Currency
-  				value={currencyFromValue}
-  				prefix={'-'}
-  				currency={currencyFrom}
-  				onCurrencyChange={this.onCurrencyFromChange}
-  				onCurrencyValueChange={this.onCurrencyFromValueChange}
-  			/>
-  			<Currency
-  				value={currencyToValue}
-  				prefix={'+'}
-  				currency={currencyTo}
-  				onCurrencyChange={this.onCurrencyToChange}
-  				onCurrencyValueChange={this.onCurrencyToValueChange}
-  			/>
+				<div className={styles.rate}>
+					<span className={styles.rate__value}>
+		  			<Rate
+		  				currencyFrom={currencyFrom}
+		  				currencyTo={currencyTo}
+		  				rates={this.props.rates}
+		  			/>
+	  			</span>
+  			</div>
+  			<div className={styles.currencyFrom}>
+	  			<Currency
+	  				value={currencyFromValue}
+	  				prefix={'-'}
+	  				currency={currencyFrom}
+	  				onCurrencyChange={this.onCurrencyFromChange}
+	  				onCurrencyValueChange={this.onCurrencyFromValueChange}
+	  			/>
+  			</div>
+  			<div className={styles.currencyTo}>
+	  			<Currency
+	  				value={currencyToValue}
+	  				prefix={'+'}
+	  				currency={currencyTo}
+	  				onCurrencyChange={this.onCurrencyToChange}
+	  				onCurrencyValueChange={this.onCurrencyToValueChange}
+	  			/>
+	  			{currencyToValue ? 
+	  				<div className={styles.currencyRate}>
+			  			<Rate
+			  				currencyFrom={currencyTo}
+			  				currencyTo={currencyFrom}
+			  				rates={this.props.rates}
+			  			/>
+		  			</div>
+  				:null}
+  			</div>
 			</div>
 		)
 	}
