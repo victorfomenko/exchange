@@ -59,7 +59,7 @@ class App extends Component {
 				this.props.updateRates(this.state.currencyFrom)
 				this.props.updateRates(this.state.currencyTo)
 			},
-			10000
+			30000
 		)
 		document.querySelector('input').focus();
 	}
